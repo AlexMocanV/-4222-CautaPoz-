@@ -1,0 +1,28 @@
+#include <iostream>
+#include <algorithm>
+long long CautaPoz(int a[], int n)
+{
+    long long mini=99999999;
+    int ans;
+    for(int i=1;i<n;i++)
+    {
+        a[i]=a[i-1]+a[i];
+    }
+    for(int i=0;i<n-1;i++)
+    {
+        if(mini>abs(a[i]-(a[n-1]-a[i])))
+        {
+            //std::cout<<i<<' '<<abs(s[i]-(s[n-1]-s[i-1]))<<"\n";
+            mini=abs(a[i]-(a[n-1]-a[i]));
+            ans=i;
+        }
+    }
+    return ans;
+}
+int main()
+{
+    int a[]={4,-3,-6,7,1},n=5;
+    std::cout<<CautaPoz(a,n);
+
+    return 0;
+}
